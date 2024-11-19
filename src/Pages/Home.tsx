@@ -1,0 +1,95 @@
+import "@fontsource/montserrat";
+import React, { useState } from "react";
+import Category from "../Components/Category";
+
+export default function Home() {
+  const [allInput, setAllInput] = useState({
+    name: "",
+    category: "0",
+    question: 10,
+  });
+
+  function handleCategory(value: string) {
+    setAllInput((prev) => {
+      return { ...prev, category: value };
+    });
+  }
+
+  function handleAllInput(
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) {
+    setAllInput((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+
+    console.log(e.target.name);
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault();
+  }
+  return (
+    <div
+      className=" flex flex-col justify-center items-center w-screen h-screen font-montserrat"
+      style={{
+        backgroundImage:
+          "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
+      }}
+    >
+      <div
+        className="text-center -translate-y-16 p-5 md:-translate-y-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500
+        to-orange-500"
+      >
+        <h1 className="text-8xl font-extrabold tracking-wide leading-tight  ">
+          TRIVIA QUIZ
+        </h1>
+        <p className="text-md md:text-lg text-gray-300 font-light mt-2">
+          Test your knowledge with fun and engaging trivia!
+        </p>
+      </div>
+      <form className="flex flex-col justify-between lg:w-1/3 sm:w-1/2 sm:shrink  items-center h-2/6 sm:h-2/5">
+        <input
+          type="text"
+          className="text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 focus-gray-400 p-2 m-4 w-full"
+          placeholder="Enter your name"
+          required
+          value={allInput.name}
+          onChange={handleAllInput}
+          name="name"
+        />
+        <div className="flex justify-between w-full my-4">
+          <label>
+            <h3 className="text-base font-medium text-gray-100 py-1">
+              Category
+            </h3>
+            <Category handleCategory={handleCategory} />
+          </label>
+
+          <label>
+            <h3 className="text-base font-medium text-gray-100 py-1">
+              No. of question
+            </h3>
+            <select
+              onChange={handleAllInput}
+              name="question"
+              className="text-base font-normal text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 md:w-48 p-0.5 "
+            >
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={20}>20</option>
+              <option value={30}>30</option>
+            </select>
+          </label>
+        </div>
+        <button
+          onClick={handleSubmit}
+          className=" px-4 py-2  text-lg font-semibold text-white bg-purple-500 rounded-lg hover:shadow-[0_0_10px_rgba(128,90,213,0.7)] hover:bg-purple-600 transition-all duration-300 my-8 w-1/2"
+        >
+          SUBMIT
+        </button>
+      </form>
+    </div>
+  );
+}
