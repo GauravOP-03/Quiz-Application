@@ -1,14 +1,17 @@
 import "@fontsource/montserrat";
-import React, { useState } from "react";
+import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/700.css";
 import Category from "../Components/Category";
+import { useAllState } from "../Hooks/useAllState";
+import { useState } from "react";
 
 export default function Home() {
+  const { setData } = useAllState();
   const [allInput, setAllInput] = useState({
     name: "",
-    category: "0",
+    category: "",
     question: 10,
   });
-
   function handleCategory(value: string) {
     setAllInput((prev) => {
       return { ...prev, category: value };
@@ -29,6 +32,8 @@ export default function Home() {
 
   function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
+    setData(allInput);
+    // quiz();
   }
   return (
     <div
@@ -49,7 +54,7 @@ export default function Home() {
           Test your knowledge with fun and engaging trivia!
         </p>
       </div>
-      <form className="flex flex-col justify-between lg:w-1/3 sm:w-1/2 sm:shrink  items-center h-2/6 sm:h-2/5">
+      <form className="flex flex-col justify-between xl:w-4/12 lg:w-2/5 sm:w-1/2 sm:shrink  items-center h-2/6 sm:h-2/5">
         <input
           type="text"
           className="text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 focus-gray-400 p-2 m-4 w-full"
