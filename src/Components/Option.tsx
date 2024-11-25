@@ -8,29 +8,35 @@ interface OptionProps {
   disable: boolean;
 }
 
-function Option({
-  options,
-  selectOption,
-  selectedOption,
-  disable,
-}: OptionProps) {
-  return (
-    <div>
-      {options.map((option, index) => (
-        <label key={index}>
-          <input
-            type="radio"
-            name="option"
-            value={option}
-            checked={selectedOption === option}
-            onChange={() => selectOption(option)}
-            disabled={disable}
-          />
-          {he.decode(option)}
-        </label>
-      ))}
-    </div>
-  );
-}
+const Option: React.FC<OptionProps> = React.memo(
+  ({ options, selectOption, selectedOption, disable }: OptionProps) => {
+    console.log("option rendered")
+    return (
+      <div>
+        {options.map((option, index) => (
+          <label key={index}>
+            <input
+              type="radio"
+              name="option"
+              value={option}
+              checked={selectedOption === option}
+              onChange={() => selectOption(option)}
+              disabled={disable}
+            />
+            {he.decode(option)}
+          </label>
+        ))}
+      </div>
+    );
+  },
+  (prevProps, nextProps) => {
+    // Compare the options and selectedOption specifically
+    return (
+      prevProps.options === nextProps.options &&
+      prevProps.selectedOption === nextProps.selectedOption &&
+      prevProps.disable === nextProps.disable
+    );
+  }
+);
 
-export default React.memo(Option);
+export default Option;

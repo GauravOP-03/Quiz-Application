@@ -3,6 +3,7 @@ import { fetchQuizQuestions } from "../Data/Api";
 import { useEffect, useState } from "react";
 import he from "he";
 import Option from "../Components/Option";
+import Timer from "../Components/Timer";
 
 interface questionType {
   question: string;
@@ -28,6 +29,7 @@ export default function Question() {
   const [counter, setCounter] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
   const [score, setScore] = useState(0);
+  const [error, setError] = useState(false);
   const [selectedOption, setSelectedOption] = useState<
     string | number | undefined
   >();
@@ -53,6 +55,7 @@ export default function Question() {
         setLoading(false);
         console.log(allInput);
       } catch (err) {
+        setError(true);
         console.error(err);
       }
     };
@@ -72,18 +75,18 @@ export default function Question() {
     console.log(target.value);
   }
 
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-      return () => clearInterval(timer); // Cleanup on unmount or reset
-    } else {
-      // Move to next question when time runs out
+  // useEffect(() => {
+  //   if (timeLeft > 0) {
+  //     const timer = setInterval(() => {
+  //       setTimeLeft((prev) => prev - 1);
+  //     }, 1000);
+  //     return () => clearInterval(timer); // Cleanup on unmount or reset
+  //   } else {
+  //     // Move to next question when time runs out
 
-      handleNextQuestion();
-    }
-  }, [timeLeft]);
+  //     handleNextQuestion();
+  //   }
+  // }, [timeLeft]);
 
   const handleNextQuestion = () => {
     if (counter < allQuestion.length - 1) {
@@ -91,7 +94,7 @@ export default function Question() {
         setScore((prevScore) => prevScore + 1);
       }
       setCounter((prevCounter) => prevCounter + 1);
-      setTimeLeft(20);
+      setTimeLeft(15);
       setSelectedOption("");
     } else {
       alert(`Quiz finished! Your score is: ${score}`);
@@ -107,10 +110,15 @@ export default function Question() {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  if(error){
+    return <div>Cannot fetch the Question</div>
+  }
   return (
     <>
       <h3>score: {score}</h3>
-      <h3>Time Left: {timeLeft}s</h3>
+      {/* <h3>Time Left: {timeLeft}s</h3> */}
+      <Timer handleNextQuestion={handleNextQuestion} setTimeLeft={setTimeLeft} timeLeft={timeLeft}/>
       <h3>{allQuestion[counter].category}</h3>
       <h3>{allQuestion[counter].difficulty}</h3>
       <div>{he.decode(allQuestion[counter].question)}</div>
