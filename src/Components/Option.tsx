@@ -12,9 +12,9 @@ const Option: React.FC<OptionProps> = React.memo(
   ({ options, selectOption, selectedOption, disable }: OptionProps) => {
     console.log("option rendered")
     return (
-      <div>
+      <div className="bg-white rounded-full w-4 h-4 border-2 border-gray-500 checked:bg-blue-300">
         {options.map((option, index) => (
-          <label key={index}>
+          <label key={index} className="mx-6">
             <input
               type="radio"
               name="option"

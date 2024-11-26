@@ -1,6 +1,7 @@
+import "@fontsource/montserrat";
 import { useAllState } from "../Hooks/useAllState";
 import { fetchQuizQuestions } from "../Data/Api";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import he from "he";
 import Option from "../Components/Option";
 import Timer from "../Components/Timer";
@@ -22,7 +23,8 @@ interface valType {
 }
 export default function Question() {
   const { allInput } = useAllState();
-  console.log(allInput);
+  
+  // console.log(allInput);
   const [allQuestion, setAllQuestion] = useState<questionType[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -63,17 +65,18 @@ export default function Question() {
     getQuestions();
   }, []);
 
-  function handleOnchange(
-    e: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>
-  ) {
-    const target = e.target as HTMLInputElement; // Explicitly cast e.target
-    if (timeLeft < 5) {
-      if (allQuestion[counter].correctOption == target.value) {
-        setScore(score + 1);
-      }
-    }
-    console.log(target.value);
-  }
+  // function handleOnchange(
+  //   e: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>
+  // ) {
+  //   const target = e.target as HTMLInputElement; // Explicitly cast e.target
+    
+  //   if (timeLeft < 5) {
+  //     if (allQuestion[counter].correctOption == target.value) {
+  //       setScore(score + 1);
+  //     }
+  //   }
+  //   console.log(target.value);
+  // }
 
   // useEffect(() => {
   //   if (timeLeft > 0) {
@@ -115,21 +118,35 @@ export default function Question() {
     return <div>Cannot fetch the Question</div>
   }
   return (
-    <>
+    <div style={{backgroundImage:
+          "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)"}} 
+          className="w-screen h-screen items-start py-6 px-10 text-justify font-montserrat text-gray-100">
+    <div className="h-1/2 flex  flex-col justify-between">
+
+    <div className="flex justify-between">
+
       <h3>score: {score}</h3>
       {/* <h3>Time Left: {timeLeft}s</h3> */}
       <Timer handleNextQuestion={handleNextQuestion} setTimeLeft={setTimeLeft} timeLeft={timeLeft}/>
-      <h3>{allQuestion[counter].category}</h3>
-      <h3>{allQuestion[counter].difficulty}</h3>
+      <div>
+
+      <h3 className="p-1 text text-right">{he.decode(allQuestion[counter].category)}</h3>
+      <h3 className="p-1 text text-right">Dificulty Level: {allQuestion[counter].difficulty}</h3>
+      </div>
+    </div>
+
+    <div className="text-center">
+
       <div>{he.decode(allQuestion[counter].question)}</div>
-      <form onChange={handleOnchange}>
+      
         <Option
           options={allQuestion[counter].option}
-          disable={timeLeft <= 5 ? true : false}
+          disable={timeLeft <= 5}
           selectOption={selectOption}
           selectedOption={selectedOption}
-        />
-      </form>
-    </>
+          />
+          </div>
+          </div>
+    </div>
   );
 }
