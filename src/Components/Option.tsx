@@ -11,8 +11,20 @@ interface OptionProps {
 const Option: React.FC<OptionProps> = React.memo(
   ({ options, selectOption, selectedOption, disable }: OptionProps) => {
     console.log("option rendered")
+
+    let uOption = [];
+    let lOption = []; 
+    let l = options.length/2;
+    for(let i = 0; i< l; i++){
+      uOption.push(options[i]);
+      lOption.push(options[i+l]);
+    }
+
+    console.log(uOption);
+    console.log(lOption);
+    
     return (
-      <div className="bg-white rounded-full w-4 h-4 border-2 border-gray-500 checked:bg-blue-300">
+      <div>
         {options.map((option, index) => (
           <label key={index} className="mx-6">
             <input
@@ -22,6 +34,7 @@ const Option: React.FC<OptionProps> = React.memo(
               checked={selectedOption === option}
               onChange={() => selectOption(option)}
               disabled={disable}
+              
             />
             {he.decode(option)}
           </label>

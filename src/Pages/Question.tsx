@@ -1,7 +1,7 @@
 import "@fontsource/montserrat";
 import { useAllState } from "../Hooks/useAllState";
 import { fetchQuizQuestions } from "../Data/Api";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import he from "he";
 import Option from "../Components/Option";
 import Timer from "../Components/Timer";
