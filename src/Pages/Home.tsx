@@ -1,5 +1,6 @@
 import "@fontsource/montserrat";
 import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import Category from "../Components/Category";
 import { useAllState } from "../Hooks/useAllState";
@@ -37,17 +38,19 @@ export default function Home() {
   }
   return (
     <div
-      className=" flex flex-col justify-center items-center w-screen h-screen font-montserrat"
+      className=" flex flex-col justify-center items-center w-screen h-screen font-montserrat py-7"
       style={{
         backgroundImage:
           "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
+        position: "fixed",
+        overflowY: "auto",
       }}
     >
       <div
         className="text-center -translate-y-16 p-5 md:-translate-y-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500
         to-orange-500"
       >
-        <h1 className="text-8xl font-extrabold tracking-wide leading-tight  ">
+        <h1 className=" text-6xl md:text-8xl font-semibold sm:font-extrabold tracking-wide leading-tight  ">
           TRIVIA QUIZ
         </h1>
         <p className="text-md md:text-lg text-gray-300 font-light mt-2">

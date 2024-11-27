@@ -12,16 +12,13 @@ const Option: React.FC<OptionProps> = React.memo(
   ({ options, selectOption, selectedOption, disable }: OptionProps) => {
     console.log("option rendered");
 
-    let uOption = [];
-    let lOption = [];
-    let l = options.length / 2;
+    const uOption = [];
+    const lOption = [];
+    const l = options.length / 2;
     for (let i = 0; i < l; i++) {
       uOption.push(options[i]);
       lOption.push(options[i + l]);
     }
-
-    console.log(uOption);
-    console.log(lOption);
 
     return (
       <div className="flex flex-wrap justify-center gap-6 p-4 ">

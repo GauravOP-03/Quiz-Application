@@ -14,6 +14,8 @@ export default function Instruction() {
       style={{
         backgroundImage:
           "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
+        position: "fixed",
+        overflowY: "auto",
       }}
       className="w-screen h-screen items-start py-6 px-10 text-justify font-montserrat"
     >

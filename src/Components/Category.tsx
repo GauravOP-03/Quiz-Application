@@ -17,7 +17,7 @@ export default function Category({ handleCategory }: categoryProp) {
     { value: 12, Option: "Entertainment: Music" },
     { value: 13, Option: "Entertainment: Musical & Theatres" },
     { value: 14, Option: "Entertainment: Television" },
-    { value: 14, Option: "Entertainment: Video Games" },
+    { value: 15, Option: "Entertainment: Video Games" },
     { value: 16, Option: "Entertainment: Board Games" },
     { value: 17, Option: "Science & Nature" },
     { value: 18, Option: "Science: Computers" },
