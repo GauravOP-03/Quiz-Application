@@ -138,7 +138,7 @@ export default function Question() {
         }}
       >
         <div className="bg-opacity-70 bg-black text-white p-8 rounded-xl shadow-xl max-w-lg w-full">
-          <div className="flex flex-col items-center text-center space-y-4">
+          <div className="flex flex-col items-center text-center space-y-4 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-12 h-12 text-red-500"
