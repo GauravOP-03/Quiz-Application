@@ -27,7 +27,7 @@ const Option: React.FC<OptionProps> = React.memo(
           {uOption.map((option, index) => (
             <label
               key={index}
-              className="flex items-center border-2 border-gray-300 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out hover:bg-gray-100 disabled:opacity-50 hover:text-gray-800 disabled:cursor-not-allowed text-lg font-semibold w-2/5"
+              className={`flex items-center border-2 border-gray-300 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out ${!disable ? 'hover:bg-gray-100 hover:text-gray-800': 'opacity-50  cursor-not-allowed'}  disabled:opacity-50  disabled:cursor-not-allowed text-lg font-semibold w-2/5`}
             >
               <input
                 type="radio"
@@ -48,7 +48,7 @@ const Option: React.FC<OptionProps> = React.memo(
           {lOption.map((option, index) => (
             <label
               key={index}
-              className="flex items-center border-2 border-gray-300 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed hover:text-gray-800 font-semibold w-2/5"
+              className={`flex items-center border-2 border-gray-300 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out ${!disable ? 'hover:bg-gray-100 hover:text-gray-800': 'opacity-50  cursor-not-allowed'}   text-lg font-semibold w-2/5`}
             >
               <input
                 type="radio"
