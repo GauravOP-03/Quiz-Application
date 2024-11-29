@@ -1,4 +1,5 @@
 import "@fontsource/montserrat";
+import { useNavigate } from "react-router-dom";
 export default function Instruction() {
   const instruction: string[] = [
     "The quiz consists of multiple-choice questions.",
@@ -8,6 +9,10 @@ export default function Instruction() {
     "You can skip questions but won't get any points for them.",
     "Your score will be displayed at the end of the quiz.",
   ];
+  const navigate = useNavigate();
+  function onButtonClick() {
+    navigate("./question");
+  }
 
   return (
     <div
@@ -32,7 +37,10 @@ export default function Instruction() {
         })}
       </ul>
       <div className="flex justify-center translate-y-24">
-        <button className="text-white bg-transparent border text-2xl border-white hover:bg-white hover:text-gray-900 font-semibold rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white sm:my-8 h-28  w-10/12 md:w-1/3">
+        <button
+          onClick={onButtonClick}
+          className="text-white bg-transparent border text-2xl border-white hover:bg-white hover:text-gray-900 font-semibold rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white sm:my-8 h-28  w-10/12 md:w-1/3"
+        >
           Start Quiz 🚀
         </button>
       </div>

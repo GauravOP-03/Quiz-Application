@@ -102,7 +102,7 @@ export default function Question() {
       setCounter((prevCounter) => prevCounter + 1);
       setTimeLeft(20);
       setSelectedOption("");
-      setRandom(randomValue(8));
+      setRandom(randomValue(bgColor.length));
     } else {
       alert(`Quiz finished! Your score is: ${score}`);
       // Optionally reset or redirect
@@ -178,7 +178,6 @@ export default function Question() {
     );
   }
 
-
   const bgColor = [
     "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
     "linear-gradient(to right top, #000020, #171950, #422686, #783069, #b13103)",
@@ -188,33 +187,29 @@ export default function Question() {
     "linear-gradient(to top, #000020, #171950, #422686, #783069, #b13103)",
     "linear-gradient(to right, #000020, #171950, #422686, #783069, #b13103)",
     "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
-    // "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
-  ]
-  
-  
-  
+    "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
+  ];
 
   return (
     <div
-    style={{
-      backgroundImage: bgColor[random], // No need for curly braces around bgColor[0]
-      position:"fixed",
-      overflowY:'auto'
-    }}
+      style={{
+        backgroundImage: bgColor[random], // No need for curly braces around bgColor[0]
+        position: "fixed",
+        overflowY: "auto",
+      }}
       className="w-screen h-screen items-start py-6  px-3 sm:px-10 text-justify font-montserrat text-gray-100"
     >
       <div className="h-full flex  flex-col">
         <div className="flex justify-between  text-xs  sm:font-medium  sm:text-lg">
           <div className="sm:flex justify-between w-1/2  ">
-
-          <h3>score: {score}</h3>
-          {/* <h3>Time Left: {timeLeft}s</h3> */}
-          <Timer
-            handleNextQuestion={handleNextQuestion}
-            setTimeLeft={setTimeLeft}
-            timeLeft={timeLeft}
+            <h3>score: {score}</h3>
+            {/* <h3>Time Left: {timeLeft}s</h3> */}
+            <Timer
+              handleNextQuestion={handleNextQuestion}
+              setTimeLeft={setTimeLeft}
+              timeLeft={timeLeft}
             />
-            </div>
+          </div>
           <div>
             <h3 className=" sm:p-1 text text-right">
               {he.decode(allQuestion[counter].category)}
@@ -240,8 +235,7 @@ export default function Question() {
             onClick={handleNextQuestion}
             className=" px-4 py-2 text-base sm:text-lg font-semibold text-white bg-purple-500 rounded-lg hover:shadow-[0_0_10px_rgba(128,90,213,0.7)] hover:bg-purple-600 transition-all duration-300 my-12 w-1/2 sm:w-1/3"
           >
-            {allInput.question-1 === counter? "SUBMIT": 'Next Question' }
-            
+            {allInput.question - 1 === counter ? "SUBMIT" : "Next Question"}
           </button>
         </div>
       </div>
