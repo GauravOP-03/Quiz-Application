@@ -22,8 +22,13 @@ export function useAllState() {
   function setData(obj: data) {
     setAllInput(obj);
   }
+
+  function randomValue(n:number){
+    return Math.floor(Math.random()*n)
+  }
   return {
     allInput,
     setData,
+    randomValue
   };
 }

@@ -5,9 +5,11 @@ import "@fontsource/montserrat/700.css";
 import Category from "../Components/Category";
 import { useAllState } from "../Hooks/useAllState";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { setData } = useAllState();
+
   const [allInput, setAllInput] = useState({
     name: "",
     category: "",
@@ -31,9 +33,13 @@ export default function Home() {
     console.log(e.target.name);
   }
 
+  const navigate = useNavigate();
   function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
+
     setData(allInput);
+    navigate('./instruction');
+
     // quiz();
   }
   return (

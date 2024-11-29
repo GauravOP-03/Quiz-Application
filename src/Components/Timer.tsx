@@ -25,7 +25,7 @@ export default function Timer({ timeLeft, setTimeLeft, handleNextQuestion }: Tim
     : "text-green-500";         // Green for normal time
 
   return (
-    <div className={`text-xl ${timerStyle}`}>
+    <div className={`text-sm sm:text-xl ${timerStyle}`}>
       Time left: {timeLeft}
     </div>
   );
