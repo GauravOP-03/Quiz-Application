@@ -3,7 +3,6 @@ import Instruction from "./Pages/Instruction";
 import Question from "./Pages/Question";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Submit from "./Pages/Submit";
-import PieChart from "./Pages/piechart";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,8 +13,7 @@ function App() {
   ]);
   return (
     <>
-      {/* <RouterProvider router={router} /> */}
-      <PieChart />
+      <RouterProvider router={router} />
     </>
   );
 }

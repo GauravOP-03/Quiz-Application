@@ -2,90 +2,83 @@ import "@fontsource/montserrat";
 import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/500.css";
-import { Pie } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
+import PieChart from "../Components/PieChart";
+import { useLocation, useNavigate } from "react-router-dom";
 
-// Registering required Chart.js components
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  CategoryScale,
-  LinearScale
-);
 export default function Submit() {
-  const data = {
-    labels: ["Apples", "Bananas", "Cherries", "Grapes", "Oranges"],
-    datasets: [
-      {
-        data: [200, 300, 150, 100, 250],
-        backgroundColor: [
-          "#FF6347", // Tomato red
-          "#FFD700", // Gold
-          "#8A2BE2", // BlueViolet
-          "#32CD32", // LimeGreen
-          "#FF4500", // OrangeRed
-        ],
-        borderColor: [
-          "#FF6347", // Tomato red
-          "#FFD700", // Gold
-          "#8A2BE2", // BlueViolet
-          "#32CD32", // LimeGreen
-          "#FF4500", // OrangeRed
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const location = useLocation();
 
-  // Options for the pie chart
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      tooltip: {
-        enabled: true,
-      },
-    },
-  };
+  // Access the state passed from Page1
+  const stateData = location.state;
+  const navigate = useNavigate();
+  function restart() {
+    navigate("/");
+  }
+  console.log(stateData);
   return (
     <div
-      className="h-screen font-montserrat h-screen py-6 text-gray-200  px-3 sm:px-10 flex flex-col items-center"
+      className="h-screen font-montserrat flex flex-col items-center justify-center px-3 sm:px-10 py-6 text-gray-100"
       style={{
         backgroundImage:
           "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
+        // position: "fixed",
+        overflowX: "auto",
+        minHeight: "fit-content",
       }}
     >
-      <div>
-        <h1
-          className="text-center  text-8xl  font-extrabold tracking-wide  leading-tight translate-y-11 text-transparent bg-clip-text bg-gradient-to-r from-purple-500
-        to-orange-500 leading-loose"
-        >
+      {/* Main Heading */}
+      <div className="my-12">
+        <h1 className="text-center text-6xl md:text-8xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-purple-500 to-orange-500 leading-tight py-10">
           COMPLETED
         </h1>
       </div>
 
-      <div className="flex justify-between w-4/6 text-3xl font-bold">
-        <div>
-          <h3 className="">SCORE</h3>
-          <h3></h3>
-          <h3 className="text-lg font-medium">TOTAL QUESTION</h3>
-          <h3 className="text-lg font-medium">ATTEMPTED</h3>
-          <h3 className="text-lg font-medium">NOT ATTEMPETED</h3>
+      {/* Score and Analytics Section */}
+      <div className="flex flex-col md:flex-row md:justify-between w-full sm:w-4/6 items-center sm:text-3xl font-bold gap-6 sm:gap-12 text-center">
+        {/* Statistics Section */}
+        <div className="flex flex-col gap-8 sm:gap-10 text-lg sm:text-xl text-gray-300">
+          <div>
+            <h3>SCORE</h3>
+            <h3 className="text-4xl sm:text-6xl font-bold text-green-400">6</h3>
+          </div>
+          <div>
+            <h3>TOTAL QUESTIONS</h3>
+            <h3 className="text-4xl sm:text-6xl font-bold text-yellow-500">
+              {stateData.total + 1}
+            </h3>
+          </div>
+          <div>
+            <h3>ATTEMPTED</h3>
+            <h3 className="text-4xl sm:text-6xl font-bold text-orange-400">
+              {stateData.total + 1 - stateData.unAttempted}
+            </h3>
+          </div>
+          <div>
+            <h3>NOT ATTEMPTED</h3>
+            <h3 className="text-4xl sm:text-6xl font-bold text-red-500">
+              {stateData.unAttempted}
+            </h3>
+          </div>
         </div>
-        <h3>Analytics</h3>
+
+        {/* Pie Chart */}
+        <div className="mt-10 sm:mt-0 sm:w-1/3 flex justify-center">
+          <PieChart
+            score={stateData.score}
+            unAttempted={stateData.unAttempted}
+            wrong={stateData.total + 1 - stateData.score}
+          />
+        </div>
       </div>
+
+      {/* Restart Button */}
+
+      <button
+        onClick={restart}
+        className=" px-4 py-2 text-base sm:text-lg font-semibold text-white bg-purple-500 rounded-lg hover:shadow-[0_0_10px_rgba(128,90,213,0.7)] hover:bg-purple-600 transition-all duration-300 my-12 w-1/2 sm:w-1/3"
+      >
+        Restart
+      </button>
     </div>
   );
 }

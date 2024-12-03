@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import he from "he";
 import Option from "../Components/Option";
 import Timer from "../Components/Timer";
+import { useNavigate } from "react-router-dom";
 
 interface questionType {
   question: string;
@@ -94,6 +95,9 @@ export default function Question() {
   //     handleNextQuestion();
   //   }
   // }, [timeLeft])
+  const navigate = useNavigate();
+
+  const stateData = { unAttempted: unAttempted, total: counter, score: score };
 
   const [random, setRandom] = useState(0);
   const handleNextQuestion = () => {
@@ -101,17 +105,17 @@ export default function Question() {
       if (selectedOption === allQuestion[counter].correctOption) {
         setScore((prevScore) => prevScore + 1);
       }
-      if(selectedOption === undefined || selectedOption === ""){
-        setUnattempted(prev=>prev+1);
-      } 
+      if (selectedOption === undefined || selectedOption === "") {
+        setUnattempted((prev) => prev + 1);
+      }
       setCounter((prevCounter) => prevCounter + 1);
       setTimeLeft(20);
       setSelectedOption("");
       setRandom(randomValue(bgColor.length));
-      console.log(selectedOption)
+      console.log(selectedOption);
     } else {
-      alert(`Quiz finished! Your score is: ${score}`);
-      console.log(unAttempted)
+      navigate("./submit", { state: stateData });
+      console.log(unAttempted);
       // Optionally reset or redirect
     }
   };
