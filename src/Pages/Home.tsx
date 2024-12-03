@@ -34,14 +34,10 @@ export default function Home() {
   }
 
   const navigate = useNavigate();
-  function handleSubmit() {
-    // e.preventDefault();
-
+  function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault();
     setData(allInput);
-    if(allInput.name.trim()){
-      navigate('./instruction');
-
-    }
+    navigate("./instruction");
 
     // quiz();
   }
@@ -59,10 +55,10 @@ export default function Home() {
         className="text-center -translate-y-16 p-5 md:-translate-y-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500
         to-orange-500"
       >
-        <h1 className=" text-6xl md:text-8xl font-semibold sm:font-extrabold tracking-wide leading-tight  ">
+        <h1 className=" text-8xl font-bold sm:font-extrabold tracking-wide leading-tight  ">
           TRIVIA QUIZ
         </h1>
-        <p className="text-md md:text-lg text-gray-300 font-light mt-2">
+        <p className=" md:text-lg text-gray-300 font-light mt-2">
           Test your knowledge with fun and engaging trivia!
         </p>
       </div>
