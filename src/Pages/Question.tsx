@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import he from "he";
 import Option from "../Components/Option";
 import Timer from "../Components/Timer";
+import { useNavigate } from "react-router-dom";
 
 interface questionType {
   question: string;
@@ -35,6 +36,8 @@ export default function Question() {
   const [selectedOption, setSelectedOption] = useState<
     string | number | undefined
   >();
+
+  const [unAttempted, setUnattempted] = useState(0);
 
   useEffect(() => {
     // console.log("qorlinng");
@@ -92,6 +95,9 @@ export default function Question() {
   //     handleNextQuestion();
   //   }
   // }, [timeLeft])
+  const navigate = useNavigate();
+
+  const stateData = { unAttempted: unAttempted, total: counter, score: score };
 
   const [random, setRandom] = useState(0);
   const handleNextQuestion = () => {
@@ -99,12 +105,17 @@ export default function Question() {
       if (selectedOption === allQuestion[counter].correctOption) {
         setScore((prevScore) => prevScore + 1);
       }
+      if (selectedOption === undefined || selectedOption === "") {
+        setUnattempted((prev) => prev + 1);
+      }
       setCounter((prevCounter) => prevCounter + 1);
       setTimeLeft(20);
       setSelectedOption("");
       setRandom(randomValue(bgColor.length));
+      console.log(selectedOption);
     } else {
-      alert(`Quiz finished! Your score is: ${score}`);
+      navigate("./submit", { state: stateData });
+      console.log(unAttempted);
       // Optionally reset or redirect
     }
   };
@@ -147,7 +158,7 @@ export default function Question() {
           <div className="flex flex-col items-center text-center space-y-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-12 h-12 text-red-500  rotate-45"
+              className="w-12 h-12 text-red-500 rotate-45"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

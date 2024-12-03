@@ -34,11 +34,14 @@ export default function Home() {
   }
 
   const navigate = useNavigate();
-  function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
-    e.preventDefault();
+  function handleSubmit() {
+    // e.preventDefault();
 
     setData(allInput);
-    navigate('./instruction');
+    if(allInput.name.trim()){
+      navigate('./instruction');
+
+    }
 
     // quiz();
   }
