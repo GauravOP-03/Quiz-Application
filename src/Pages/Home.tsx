@@ -30,7 +30,7 @@ export default function Home() {
       return { ...prev, [e.target.name]: e.target.value };
     });
 
-    console.log(e.target.name);
+    // console.log(e.target.name);
   }
 
   const navigate = useNavigate();

@@ -11,11 +11,11 @@ export function useAllState() {
     return Object.keys(Input).length > 0 ? Input : value;
   });
 
-  console.log("helo");
+  // console.log("helo");
 
   useEffect(() => {
     localStorage.setItem("Input", JSON.stringify(allInput));
-    console.log("is this working?");
+    // console.log("is this working?");
   }, [allInput]);
 
   // const [option, setOption] = useState([]);

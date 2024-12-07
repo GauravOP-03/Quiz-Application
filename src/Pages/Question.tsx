@@ -47,7 +47,7 @@ export default function Question() {
           allInput.question,
           allInput.category
         );
-        console.log("Fetched data:", data);
+        // console.log("Fetched data:", data);
         const formattedQuestions = data.map((val: valType) => ({
           question: val.question,
           difficulty: val.difficulty,
@@ -60,7 +60,7 @@ export default function Question() {
 
         setAllQuestion(formattedQuestions);
         setLoading(false);
-        console.log(allInput);
+        // console.log(allInput);
       } catch (err) {
         setError(true);
         console.error(err);
@@ -112,17 +112,17 @@ export default function Question() {
       setTimeLeft(20);
       setSelectedOption("");
       setRandom(randomValue(bgColor.length));
-      console.log(selectedOption);
+      // console.log(selectedOption);
     } else {
       navigate("./submit", { state: stateData });
-      console.log(unAttempted);
+      // console.log(unAttempted);
       // Optionally reset or redirect
     }
   };
 
   function selectOption(value: string | number) {
     setSelectedOption(value);
-    console.log(selectedOption);
+    // console.log(selectedOption);
   }
 
   if (loading) {

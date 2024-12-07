@@ -10,7 +10,7 @@ interface OptionProps {
 
 const Option: React.FC<OptionProps> = React.memo(
   ({ options, selectOption, selectedOption, disable }: OptionProps) => {
-    console.log("option rendered");
+    // console.log("option rendered");
 
     const uOption = [];
     const lOption = [];
