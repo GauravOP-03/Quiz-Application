@@ -30,21 +30,22 @@ const PieChart = ({ score, unAttempted, wrong }: PieChartProps) => {
     ],
   };
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          color: "#FFFFFF", // White label text color for contrast
-        },
-      },
-    },
-  };
+  // Corrected options without scales for pie charts
+  // const options: ChartOptions = {
+  //   responsive: true,
+  //   plugins: {
+  //     legend: {
+  //       position: "top", // Valid position for the legend
+  //       labels: {
+  //         color: "#FFFFFF", // White label text color for contrast
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <div style={styles.container}>
-      <Pie data={data} options={options} />
+      <Pie data={data} />
     </div>
   );
 };
@@ -55,6 +56,7 @@ const styles = {
     width: "350px",
     height: "350px",
     margin: "0 auto",
+    color: "white",
     backdropFilter: "blur(10px)", // Soft blur to match your theme
     backgroundColor: "rgba(0, 0, 0, 0.25)", // Slight transparency for background
     borderRadius: "15px",
