@@ -21,13 +21,17 @@ const Option: React.FC<OptionProps> = React.memo(
     }
 
     return (
-      <div className="flex flex-wrap justify-center gap-6 p-4 ">
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 p-4 ">
         {/* Upper Half of Options */}
-        <div className="flex flex-wrap justify-evenly gap-6 w-full md:w-5/6  mt-20">
+        <div className="flex flex-wrap justify-evenly gap-6 w-full md:w-5/6  mt-20 ">
           {uOption.map((option, index) => (
             <label
               key={index}
-              className={`flex items-center border-2 border-gray-300 rounded-lg p-3 transition duration-200 ease-in-out ${!disable ? 'hover:bg-gray-100 hover:text-gray-800 cursor-pointer ': 'opacity-50  cursor-not-allowed'} text-lg font-semibold w-2/5`}
+              className={`flex items-center border-2 border-gray-300 rounded-lg p-3 transition duration-200 ease-in-out ${
+                !disable
+                  ? "hover:bg-gray-100 hover:text-gray-800 cursor-pointer "
+                  : "opacity-50  cursor-not-allowed"
+              } text-lg font-semibold w-5/6 whitespace-pre-wrap lg:w-2/5 md:w-5/12`}
             >
               <input
                 type="radio"
@@ -48,7 +52,11 @@ const Option: React.FC<OptionProps> = React.memo(
           {lOption.map((option, index) => (
             <label
               key={index}
-              className={`flex items-center border-2 border-gray-300 rounded-lg p-3  transition duration-200 ease-in-out ${!disable ? 'hover:bg-gray-100 hover:text-gray-800 cursor-pointer': 'opacity-50 cursor-not-allowed'}   text-lg font-semibold w-2/5`}
+              className={`flex items-center border-2 border-gray-300 rounded-lg p-3  transition duration-200 ease-in-out ${
+                !disable
+                  ? "hover:bg-gray-100 hover:text-gray-800 cursor-pointer"
+                  : "opacity-50 cursor-not-allowed"
+              }   text-lg font-semibold w-5/6 whitespace-pre-wrap lg:w-2/5 md:w-5/12`}
             >
               <input
                 type="radio"

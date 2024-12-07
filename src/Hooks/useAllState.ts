@@ -15,6 +15,7 @@ export function useAllState() {
 
   useEffect(() => {
     localStorage.setItem("Input", JSON.stringify(allInput));
+    console.log("is this working?");
   }, [allInput]);
 
   // const [option, setOption] = useState([]);
@@ -23,12 +24,12 @@ export function useAllState() {
     setAllInput(obj);
   }
 
-  function randomValue(n:number){
-    return Math.floor(Math.random()*n)
+  function randomValue(n: number) {
+    return Math.floor(Math.random() * n);
   }
   return {
     allInput,
     setData,
-    randomValue
+    randomValue,
   };
 }

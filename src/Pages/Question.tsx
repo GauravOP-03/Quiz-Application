@@ -231,8 +231,8 @@ export default function Question() {
           </div>
         </div>
 
-        <div className="text-center translate-y-24">
-          <div className="text-2xl sm-text-3xl sm-font-semibold">
+        <div className="text-center translate-y-24 sm:translate-y-40">
+          <div className="text-2xl sm:text-3xl sm:font-semibold">
             {he.decode(allQuestion[counter].question)}
           </div>
 

@@ -47,7 +47,7 @@ export default function Category({ handleCategory }: categoryProp) {
       <select
         onChange={handleValue}
         style={{ direction: "ltr" }}
-        className="text-base font-normal mr-3 sm:mr-0 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 p-0.5 md:w-48 "
+        className="text-base font-normal mr-3 sm:mr-0 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 md:w-48 lg:w-64 p-0.5 h-9 "
       >
         {allCategory.map((val, idx) => {
           return (

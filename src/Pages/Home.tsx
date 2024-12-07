@@ -65,7 +65,7 @@ export default function Home() {
       <form className="flex flex-col justify-between xl:w-4/12 lg:w-2/5 sm:w-1/2 sm:shrink  items-center h-2/6 sm:h-2/5">
         <input
           type="text"
-          className="text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 focus-gray-400 p-2 m-4 w-full"
+          className="text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 focus-gray-400 p-2 m-4 w-full h-10"
           placeholder="Enter your name"
           required
           value={allInput.name}
@@ -87,7 +87,7 @@ export default function Home() {
             <select
               onChange={handleAllInput}
               name="question"
-              className="text-base font-normal text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 md:w-48 p-0.5 "
+              className="text-base font-normal text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 md:w-48 lg:w-64 p-0.5 h-9"
             >
               <option value={10}>10</option>
               <option value={15}>15</option>
