@@ -22,7 +22,7 @@ export default function MultiSubmit({
   stateData,
 }: submitProps) {
   const [playerScoreData, setplayerScoreData] = useState(playerScore);
-  console.log(playerScore);
+  // console.log(playerScore);
   const [stillInQuiz, setStillInQuiz] = useState<string[]>([]);
   useEffect(() => {
     socket.on("get_score", (data) => {

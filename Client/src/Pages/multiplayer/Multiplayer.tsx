@@ -33,7 +33,7 @@ export default function Multiplayer() {
     setSocket(socketInstance);
 
     socketInstance.on("connected_players", (data) => {
-      console.log(data);
+      // console.log(data);
       setAllPlayers(data);
       setIsLoading(false);
     });
@@ -45,7 +45,7 @@ export default function Multiplayer() {
 
     socketInstance.on("all_start_quiz", (data) => {
       setAllQuestion(data.results);
-      console.log(allQuestion);
+      // console.log(allQuestion);
     });
 
     socketInstance.on("get_id", (data) => {
@@ -56,7 +56,7 @@ export default function Multiplayer() {
     });
 
     socketInstance.on("remove", (data) => {
-      console.log(data);
+      // console.log(data);
       setErrorMessage(data.error);
     });
 

@@ -105,7 +105,7 @@ export default function Question({
 
           return [...playerDetails];
         });
-        console.log(playersScore);
+        // console.log(playersScore);
       });
 
       return () => {
@@ -113,8 +113,6 @@ export default function Question({
           socket.off("get_score");
         }
       };
-    } else {
-      console.error("Room number or socket is undefined.");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomNo, socket, score, counter]); // Ensure these dependencies are updated correctly
