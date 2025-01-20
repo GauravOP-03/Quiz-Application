@@ -1,16 +1,16 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const axios = require("axios");
-const port = 3000;
 
 app.use(cors());
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.origin,
     methods: ["GET", "POST"],
   },
 });
@@ -152,6 +152,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(port, () => {
-  console.log("Server is live on port", port);
+server.listen(process.env.PORT, () => {
+  console.log("Server is live on port", process.env.PORT);
 });

@@ -28,7 +28,8 @@ export default function Multiplayer() {
 
   // Function to initialize socket when the form is submitted
   const initializeSocket = () => {
-    const socketInstance = io("http://localhost:3000");
+    const url = import.meta.env.VITE_SERVER_URL;
+    const socketInstance = io(url);
     setSocket(socketInstance);
 
     socketInstance.on("connected_players", (data) => {
