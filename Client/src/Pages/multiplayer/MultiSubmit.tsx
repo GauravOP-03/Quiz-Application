@@ -1,3 +1,7 @@
+import "@fontsource/montserrat";
+import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/700.css";
 import { Socket } from "socket.io-client";
 import PieChart from "../../Components/PieChart";
 import { SetStateAction, useEffect, useState } from "react";
@@ -77,7 +81,7 @@ export default function MultiSubmit({
 
   return (
     <div
-      className="w-screen flex flex-col justify-center items-center"
+      className="w-screen flex flex-col justify-center items-center font-montserrat"
       style={{
         backgroundImage:
           "linear-gradient(to left top, #000020, #171950, #422686, #783069, #b13103)",
@@ -114,7 +118,7 @@ export default function MultiSubmit({
                         {player.name}
                       </span>
                     </span>
-                    <span className="text-green-400">
+                    <span className="text-green-400 font-md md:font-semibold">
                       {player.score} points
                     </span>
                   </div>
