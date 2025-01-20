@@ -87,6 +87,7 @@ export default function Home() {
             <input
               onChange={handleAllInput}
               name="question"
+              type="number"
               list="question"
               className="text-base font-normal text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-40 md:w-48 lg:w-60 p-0.5 h-9"
               value={allInput.question}
