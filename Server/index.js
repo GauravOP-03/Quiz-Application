@@ -84,7 +84,7 @@ io.on("connection", (socket) => {
     // console.log(data);
     getQuestion(data.question, data.category)
       .then((allQuestion) => {
-        console.log(allQuestion);
+        // console.log(allQuestion);
         io.to(data.roomId).emit("all_start_quiz", allQuestion);
       })
       .catch((e) => {
