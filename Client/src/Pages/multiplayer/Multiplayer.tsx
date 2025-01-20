@@ -227,6 +227,7 @@ export default function Multiplayer() {
 
                             <input
                               onChange={onChangeInput}
+                              type="number"
                               name="question"
                               list="question"
                               value={hostInput.question}
