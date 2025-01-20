@@ -110,7 +110,7 @@ io.on("connection", (socket) => {
       }
     }
     io.to(roomId).emit("get_score", score[roomId]);
-    console.log(score);
+    // console.log(score);
   });
 
   // deleting players
