@@ -12,7 +12,7 @@ export default function Submit() {
   // Access the state passed from Page1
   const stateData = location.state;
   const navigate = useNavigate();
-  const [timerId, setTimerId] = useState<number | null>(null);
+  const [timerId, setTimerId] = useState<NodeJS.Timeout | null | number>(null);
   function restart() {
     if (timerId) {
       clearTimeout(timerId);
