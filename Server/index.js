@@ -8,9 +8,10 @@ const axios = require("axios");
 
 app.use(cors());
 const server = createServer(app);
+const allowedOrigins = [process.env.origin1, process.env.origin2];
 const io = new Server(server, {
   cors: {
-    origin: process.env.origin,
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
 });
