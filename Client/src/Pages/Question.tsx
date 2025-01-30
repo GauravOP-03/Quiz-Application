@@ -178,7 +178,10 @@ export default function Question({
       if (!multiQuestion && !socket) {
         navigate("./submit", { state: stateData });
       } else {
-        setCounter((prevCounter) => prevCounter + 1);
+        if(counter.length <== allQuestion.length){
+          setCounter((prevCounter) => prevCounter + 1);
+        }
+        
       }
       // console.log(unAttempted);
       // Optionally reset or redirect
